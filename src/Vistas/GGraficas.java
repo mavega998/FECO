@@ -7,7 +7,10 @@ package Vistas;
 
 import Modelos.ConexionArduino;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -27,6 +30,10 @@ public class GGraficas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         arduino = con;
+        serie.add(0,0);
+        coleccion.addSeries(serie);
+        grafica = ChartFactory.createXYLineChart("Temperatura vs Tiempo","Tiempo","Temperatura",
+                                                coleccion,PlotOrientation.VERTICAL,true,true,false);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +43,7 @@ public class GGraficas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         cmbCultivo = new javax.swing.JComboBox<>();
         cmdViewCultivo = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        pGrafica = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,16 +58,16 @@ public class GGraficas extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Grafica"));
+        pGrafica.setBorder(javax.swing.BorderFactory.createTitledBorder("Grafica"));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pGraficaLayout = new javax.swing.GroupLayout(pGrafica);
+        pGrafica.setLayout(pGraficaLayout);
+        pGraficaLayout.setHorizontalGroup(
+            pGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 390, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pGraficaLayout.setVerticalGroup(
+            pGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 378, Short.MAX_VALUE)
         );
 
@@ -77,7 +84,7 @@ public class GGraficas extends javax.swing.JDialog {
                         .addComponent(cmbCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdViewCultivo))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,7 +96,7 @@ public class GGraficas extends javax.swing.JDialog {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmdViewCultivo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -98,7 +105,9 @@ public class GGraficas extends javax.swing.JDialog {
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
         String rta;
-
+        ChartPanel panelGraph = new ChartPanel(grafica);
+        pGrafica.add(panelGraph);
+        
         if (cmbCultivo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
         }
@@ -107,7 +116,8 @@ public class GGraficas extends javax.swing.JDialog {
             for (int i = 0; i < 100; i++) {
                 arduino.enviarDatos("1");
                 rta = arduino.getMensaje();
-                String[] data = rta.split(":");
+                String[] data = rta.split(":");                
+                serie.add(i,Integer.parseInt(data[2].substring(0, 1)));
             }
         }
         if (cmbCultivo.getSelectedIndex() == 2) {
@@ -144,6 +154,6 @@ public class GGraficas extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbCultivo;
     private javax.swing.JButton cmdViewCultivo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pGrafica;
     // End of variables declaration//GEN-END:variables
 }
