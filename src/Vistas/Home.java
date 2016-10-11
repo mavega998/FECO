@@ -190,7 +190,7 @@ public class Home extends javax.swing.JFrame {
     private void cmdViewConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewConfigActionPerformed
         // TODO add your handling code here:
         GConfiguracion vConfigura;
-        vConfigura = new GConfiguracion();
+        vConfigura = new GConfiguracion(this,true,arduino);
         vConfigura.setVisible(true);
     }//GEN-LAST:event_cmdViewConfigActionPerformed
 
