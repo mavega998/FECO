@@ -104,7 +104,7 @@ public class GGraficas extends javax.swing.JDialog {
         }
         if (cmbCultivo.getSelectedIndex() == 1) {
 
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 100; i++) {
                 arduino.enviarDatos("1");
                 rta = arduino.getMensaje();
                 String[] data = rta.split(":");
