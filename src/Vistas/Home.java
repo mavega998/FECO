@@ -164,15 +164,19 @@ public class Home extends javax.swing.JFrame {
 
         if (arduino == null) {
             puerto = (String) JOptionPane.showInputDialog(null, "Ingrese Puerto", "Sistema", JOptionPane.INFORMATION_MESSAGE, icono, null, null);
-            arduino = new ConexionArduino();
-            arduino.conectar(puerto.toUpperCase());
+            if (!puerto.equals("")) {
+                arduino = new ConexionArduino();
+                arduino.conectar(puerto);
 
-            cmdViewCultivo.setEnabled(true);
-            cmdViewGraphics.setEnabled(true);
-            cmdViewMaint.setEnabled(true);
-            cmdViewConfig.setEnabled(true);
+                cmdViewCultivo.setEnabled(true);
+                cmdViewGraphics.setEnabled(true);
+                cmdViewMaint.setEnabled(true);
+                cmdViewConfig.setEnabled(true);
 
-            cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugon.png"));
+                cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugon.png"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el puerto", "Sistema", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             arduino.desconectar();
             arduino = null;
@@ -190,7 +194,7 @@ public class Home extends javax.swing.JFrame {
     private void cmdViewConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewConfigActionPerformed
         // TODO add your handling code here:
         GConfiguracion vConfigura;
-        vConfigura = new GConfiguracion(this,true,arduino);
+        vConfigura = new GConfiguracion(this, true, arduino);
         vConfigura.setVisible(true);
     }//GEN-LAST:event_cmdViewConfigActionPerformed
 

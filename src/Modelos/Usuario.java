@@ -1,49 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelos;
 
-/**
- *
- * @author MECATRONICA
- */
-public class Usuario {
+import java.util.ArrayList;
 
-    private String usuario;
-    private String password;
-    private String nombre;
+public class Usuario extends Persona {
+
     private Rol rol;
-    private String email;
-    private String direccion;
+    private String password;
+    private boolean estado;
+    private ArrayList<Lote> lotes;
 
     public Usuario() {
-
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+        super();
     }
 
     public Rol getRol() {
@@ -54,20 +21,28 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public ArrayList<Lote> getLotes() {
+        return lotes;
+    }
+
+    public void setLotes(ArrayList<Lote> lotes) {
+        this.lotes = lotes;
     }
 
 }

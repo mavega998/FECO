@@ -2,34 +2,37 @@ package Modelos;
 
 public class Lote {
 
-    private String tamaño;
-    private String capacidad;
-    private String estado;
-    private float altura;
-    private float paramIniPot;
-    private float paramIniFos;
-    private float paramIniCal;
-    private float paramIniPh;
+    private String idLote;
     private Cultivo cultivo;
+    private Float tamanho;
+    private String estado;
+    private Modulo modulo;
 
     public Lote() {
-
     }
 
-    public String getTamaño() {
-        return tamaño;
+    public String getIdLote() {
+        return idLote;
     }
 
-    public void setTamaño(String tamaño) {
-        this.tamaño = tamaño;
+    public void setIdLote(String idLote) {
+        this.idLote = idLote;
     }
 
-    public String getCapacidad() {
-        return capacidad;
+    public Cultivo getCultivo() {
+        return cultivo;
     }
 
-    public void setCapacidad(String capacidad) {
-        this.capacidad = capacidad;
+    public void setCultivo(Cultivo cultivo) {
+        this.cultivo = cultivo;
+    }
+
+    public Float getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(Float tamanho) {
+        this.tamanho = tamanho;
     }
 
     public String getEstado() {
@@ -40,52 +43,12 @@ public class Lote {
         this.estado = estado;
     }
 
-    public float getAltura() {
-        return altura;
+    public Modulo getModulo() {
+        return modulo;
     }
 
-    public void setAltura(float altura) {
-        this.altura = altura;
-    }
-
-    public float getParamIniPot() {
-        return paramIniPot;
-    }
-
-    public void setParamIniPot(float paramIniPot) {
-        this.paramIniPot = paramIniPot;
-    }
-
-    public float getParamIniFos() {
-        return paramIniFos;
-    }
-
-    public void setParamIniFos(float paramIniFos) {
-        this.paramIniFos = paramIniFos;
-    }
-
-    public float getParamIniCal() {
-        return paramIniCal;
-    }
-
-    public void setParamIniCal(float paramIniCal) {
-        this.paramIniCal = paramIniCal;
-    }
-
-    public float getParamIniPh() {
-        return paramIniPh;
-    }
-
-    public void setParamIniPh(float paramIniPh) {
-        this.paramIniPh = paramIniPh;
-    }
-
-    public Cultivo getCultivo() {
-        return cultivo;
-    }
-
-    public void setCultivo(Cultivo cultivo) {
-        this.cultivo = cultivo;
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
     }
 
 }

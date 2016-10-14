@@ -1,57 +1,70 @@
 package Modelos;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Modulo {
 
-    private String nombre;
-    private int entDigtal;
-    private int salDigital;
-    private int entAnaloga;
-    private int salAnaloga;
+    private String idModulo;
+    private String nombreModulo;
+    private int numEntradasDigtales;
+    private int numSalidasDigitales;
+    private int numEntradasAnalogas;
+    private int numSalidasAnalogas;
     private boolean estado;
-    private Sensor sensor;
+    private ArrayList<Sensor> sensores;
+    private Date fechaDesactivacion;
 
     public Modulo() {
 
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getIdModulo() {
+        return idModulo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdModulo(String idModulo) {
+        this.idModulo = idModulo;
     }
 
-    public int getEntDigtal() {
-        return entDigtal;
+    public String getNombreModulo() {
+        return nombreModulo;
     }
 
-    public void setEntDigtal(int entDigtal) {
-        this.entDigtal = entDigtal;
+    public void setNombreModulo(String nombreModulo) {
+        this.nombreModulo = nombreModulo;
     }
 
-    public int getSalDigital() {
-        return salDigital;
+    public int getNumEntradasDigtales() {
+        return numEntradasDigtales;
     }
 
-    public void setSalDigital(int salDigital) {
-        this.salDigital = salDigital;
+    public void setNumEntradasDigtales(int numEntradasDigtales) {
+        this.numEntradasDigtales = numEntradasDigtales;
     }
 
-    public int getEntAnaloga() {
-        return entAnaloga;
+    public int getNumSalidasDigitales() {
+        return numSalidasDigitales;
     }
 
-    public void setEntAnaloga(int entAnaloga) {
-        this.entAnaloga = entAnaloga;
+    public void setNumSalidasDigitales(int numSalidasDigitales) {
+        this.numSalidasDigitales = numSalidasDigitales;
     }
 
-    public int getSalAnaloga() {
-        return salAnaloga;
+    public int getNumEntradasAnalogas() {
+        return numEntradasAnalogas;
     }
 
-    public void setSalAnaloga(int salAnaloga) {
-        this.salAnaloga = salAnaloga;
+    public void setNumEntradasAnalogas(int numEntradasAnalogas) {
+        this.numEntradasAnalogas = numEntradasAnalogas;
+    }
+
+    public int getNumSalidasAnalogas() {
+        return numSalidasAnalogas;
+    }
+
+    public void setNumSalidasAnalogas(int numSalidasAnalogas) {
+        this.numSalidasAnalogas = numSalidasAnalogas;
     }
 
     public boolean isEstado() {
@@ -62,12 +75,20 @@ public class Modulo {
         this.estado = estado;
     }
 
-    public Sensor getSensor() {
-        return sensor;
+    public ArrayList<Sensor> getSensores() {
+        return sensores;
     }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
+    public void setSensores(ArrayList<Sensor> sensor) {
+        this.sensores = sensor;
+    }
+
+    public Date getFechaDesactivacion() {
+        return fechaDesactivacion;
+    }
+
+    public void setFechaDesactivacion(Date fechaDesactivacion) {
+        this.fechaDesactivacion = fechaDesactivacion;
     }
 
 }
