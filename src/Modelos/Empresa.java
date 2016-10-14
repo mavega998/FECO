@@ -11,8 +11,18 @@ package Modelos;
  */
 public class Empresa extends Persona {
 
+    private String ciudad;
+
     public Empresa() {
         super();
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
 }

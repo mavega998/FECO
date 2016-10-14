@@ -3,15 +3,14 @@ package Modelos;
 public class Bomba {
 
     private String nombre;
-    private int timeTrabajo;
-    private float nivCorriente;
-    private float caudal;
+    private int tiempoTrabajo;
+    private float corrienteNominal;
+    private float cuadal;
+    private int voltajeTrabajo;
+    private boolean estado;
+    private String modoOperacion;
 
     public Bomba() {
-        this.nombre = "bomba";
-        this.timeTrabajo = 0;
-        this.nivCorriente = 0;
-        this.caudal = 0;
     }
 
     public String getNombre() {
@@ -22,28 +21,53 @@ public class Bomba {
         this.nombre = nombre;
     }
 
-    public int getTimeTrabajo() {
-        return timeTrabajo;
+    public int getTiempoTrabajo() {
+        return tiempoTrabajo;
     }
 
-    public void setTimeTrabajo(int timeTrabajo) {
-        this.timeTrabajo = timeTrabajo;
+    public void setTiempoTrabajo(int tiempoTrabajo) {
+        this.tiempoTrabajo = tiempoTrabajo;
     }
 
-    public float getNivCorriente() {
-        return nivCorriente;
+    public float getCorrienteNominal() {
+        return corrienteNominal;
     }
 
-    public void setNivCorriente(float nivCorriente) {
-        this.nivCorriente = nivCorriente;
+    public void setCorrienteNominal(float corrienteNominal) {
+        this.corrienteNominal = corrienteNominal;
     }
 
-    public float getCaudal() {
-        return caudal;
+    public float getCuadal() {
+        return cuadal;
     }
 
-    public void setCaudal(float caudal) {
-        this.caudal = caudal;
+    public void setCuadal(float cuadal) {
+        this.cuadal = cuadal;
     }
 
+    public int getVoltajeTrabajo() {
+        return voltajeTrabajo;
+    }
+
+    public void setVoltajeTrabajo(int voltajeTrabajo) {
+        this.voltajeTrabajo = voltajeTrabajo;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getModoOperacion() {
+        return modoOperacion;
+    }
+
+    public void setModoOperacion(String modoOperacion) {
+        this.modoOperacion = modoOperacion;
+    }
+    
+    
 }
