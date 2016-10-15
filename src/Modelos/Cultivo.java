@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelos;
 
-/**
- *
- * @author MECATRONICA
- */
 public class Cultivo {
 
     private String nombre;
     private int tiempoDias;
     private int numPlantas;
     private int fechaIni;
-    
+
     private float humRealActual;
     private float PhRealActual;
-    
+
     private float SpHumRelFloracion;
     private float SpHumRelMaduracion;
     private float SpHumRelFinalizacion;
@@ -32,7 +23,6 @@ public class Cultivo {
     private int SpDiasFinalizacion;
 
     public Cultivo() {
-
     }
 
     public String getNombre() {
