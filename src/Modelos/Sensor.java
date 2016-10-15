@@ -3,9 +3,9 @@ package Modelos;
 public class Sensor {
 
     private String idSensor;
-    private String refSensor;
-    private String tipoSensor;
-    private String estadoSensor;
+    private String refSensor;       
+    private String tipoSensor;      // Temperatura, Humedad, pH
+    private String estadoSensor;    // Mantenimiento, Activo, Inactivo
 
     public Sensor() {
     }
