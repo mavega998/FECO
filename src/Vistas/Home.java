@@ -50,7 +50,7 @@ public class Home extends javax.swing.JFrame {
 
         cmdViewCultivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmdViewCultivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fields.png"))); // NOI18N
-        cmdViewCultivo.setText("CULTIVOS");
+        cmdViewCultivo.setText("CCTV CULTIVOS");
         cmdViewCultivo.setToolTipText("");
         cmdViewCultivo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cmdViewCultivo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -62,7 +62,7 @@ public class Home extends javax.swing.JFrame {
 
         cmdViewGraphics.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmdViewGraphics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/charts.png"))); // NOI18N
-        cmdViewGraphics.setText("GRAFICAS");
+        cmdViewGraphics.setText("DATOS CULTIVOS");
         cmdViewGraphics.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cmdViewGraphics.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         cmdViewGraphics.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         cmdConnect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plugoff.png"))); // NOI18N
-        cmdConnect.setToolTipText("Conectar Xbee");
+        cmdConnect.setToolTipText("Conectar");
         cmdConnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdConnectActionPerformed(evt);
@@ -116,16 +116,13 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmdViewMaint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdViewCultivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cmdViewCultivo)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmdViewGraphics))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cmdViewMaint)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmdViewConfig)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cmdViewGraphics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdViewConfig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmdConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,9 +151,9 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
-        GCultivo vcultivo;
-        vcultivo = new GCultivo(this, true, arduino);
-        vcultivo.setVisible(true);
+        GGraficas ggrafica;
+        ggrafica = new GGraficas(this, true, arduino);
+        ggrafica.setVisible(true);
     }//GEN-LAST:event_cmdViewCultivoActionPerformed
 
     private void cmdConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdConnectActionPerformed
@@ -210,9 +207,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdViewMaintActionPerformed
 
     private void cmdViewGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewGraphicsActionPerformed
-        GGraficas ggrafica;
-        ggrafica = new GGraficas(this, true, arduino);
-        ggrafica.setVisible(true);
+        GCultivo vcultivo;
+        vcultivo = new GCultivo(this, true, arduino);
+        vcultivo.setVisible(true);
     }//GEN-LAST:event_cmdViewGraphicsActionPerformed
 
     public static void main(String args[]) {
