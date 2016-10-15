@@ -14,21 +14,22 @@ public class Cultivo {
     private String nombre;
     private int tiempoDias;
     private int numPlantas;
-    private float humRelFloracion;
-    private float humRelMaduracion;
-    private float humRelFinalizacion;
+    private int fechaIni;
+    
+    private float humRealActual;
+    private float PhRealActual;
+    
     private float SpHumRelFloracion;
     private float SpHumRelMaduracion;
     private float SpHumRelFinalizacion;
-    private float PhFloracion;
-    private float PhMaduracion;
-    private float PhFinalizacion;
     private float SpPhFloracion;
     private float SpPhMaduracion;
     private float SpPhFinalizacion;
-    private int fechaIni;
-    private float temAmbiente;
-    private float temPiso;
+    private float SpTemAmbiente;
+    private float SpTemPiso;
+    private int SpDiasFloracion;
+    private int SpDiasMaduracion;
+    private int SpDiasFinalizacion;
 
     public Cultivo() {
 
@@ -58,28 +59,12 @@ public class Cultivo {
         this.numPlantas = numPlantas;
     }
 
-    public float getHumRelFloracion() {
-        return humRelFloracion;
+    public float getHumRealActual() {
+        return humRealActual;
     }
 
-    public void setHumRelFloracion(float humRelFloracion) {
-        this.humRelFloracion = humRelFloracion;
-    }
-
-    public float getHumRelMaduracion() {
-        return humRelMaduracion;
-    }
-
-    public void setHumRelMaduracion(float humRelMaduracion) {
-        this.humRelMaduracion = humRelMaduracion;
-    }
-
-    public float getHumRelFinalizacion() {
-        return humRelFinalizacion;
-    }
-
-    public void setHumRelFinalizacion(float humRelFinalizacion) {
-        this.humRelFinalizacion = humRelFinalizacion;
+    public void setHumRealActual(float humRealActual) {
+        this.humRealActual = humRealActual;
     }
 
     public float getSpHumRelFloracion() {
@@ -106,28 +91,12 @@ public class Cultivo {
         this.SpHumRelFinalizacion = SpHumRelFinalizacion;
     }
 
-    public float getPhFloracion() {
-        return PhFloracion;
+    public float getPhRealActual() {
+        return PhRealActual;
     }
 
-    public void setPhFloracion(float PhFloracion) {
-        this.PhFloracion = PhFloracion;
-    }
-
-    public float getPhMaduracion() {
-        return PhMaduracion;
-    }
-
-    public void setPhMaduracion(float PhMaduracion) {
-        this.PhMaduracion = PhMaduracion;
-    }
-
-    public float getPhFinalizacion() {
-        return PhFinalizacion;
-    }
-
-    public void setPhFinalizacion(float PhFinalizacion) {
-        this.PhFinalizacion = PhFinalizacion;
+    public void setPhRealActual(float PhRealActual) {
+        this.PhRealActual = PhRealActual;
     }
 
     public float getSpPhFloracion() {
@@ -163,19 +132,19 @@ public class Cultivo {
     }
 
     public float getTemAmbiente() {
-        return temAmbiente;
+        return SpTemAmbiente;
     }
 
     public void setTemAmbiente(float temAmbiente) {
-        this.temAmbiente = temAmbiente;
+        this.SpTemAmbiente = temAmbiente;
     }
 
     public float getTemPiso() {
-        return temPiso;
+        return SpTemPiso;
     }
 
     public void setTemPiso(float temPiso) {
-        this.temPiso = temPiso;
+        this.SpTemPiso = temPiso;
     }
 
 }

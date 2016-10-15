@@ -207,9 +207,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdViewMaintActionPerformed
 
     private void cmdViewGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewGraphicsActionPerformed
-        GCultivo vcultivo;
-        vcultivo = new GCultivo(this, true, arduino);
-        vcultivo.setVisible(true);
+        GProceso vproceso;
+        vproceso = new GProceso(this, true, arduino);
+        vproceso.setVisible(true);
     }//GEN-LAST:event_cmdViewGraphicsActionPerformed
 
     public static void main(String args[]) {

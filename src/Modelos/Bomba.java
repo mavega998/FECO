@@ -9,6 +9,7 @@ public class Bomba {
     private int voltajeTrabajo;
     private boolean estado;
     private String modoOperacion;
+    private int horasTrabajo;
 
     public Bomba() {
     }
@@ -68,6 +69,13 @@ public class Bomba {
     public void setModoOperacion(String modoOperacion) {
         this.modoOperacion = modoOperacion;
     }
-    
-    
+
+    public int getHorasTrabajo() {
+        return horasTrabajo;
+    }
+
+    public void setHorasTrabajo(int horasTrabajo) {
+        this.horasTrabajo = horasTrabajo;
+    }
+
 }
