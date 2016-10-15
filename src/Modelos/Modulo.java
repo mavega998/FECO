@@ -7,7 +7,7 @@ public class Modulo {
 
     private String idModulo;
     private String nombreModulo;
-    private int numEntradasDigtales;
+    private int numEntradasDigitales;
     private int numSalidasDigitales;
     private int numEntradasAnalogas;
     private int numSalidasAnalogas;
@@ -35,12 +35,12 @@ public class Modulo {
         this.nombreModulo = nombreModulo;
     }
 
-    public int getNumEntradasDigtales() {
-        return numEntradasDigtales;
+    public int getNumEntradasDigitales() {
+        return numEntradasDigitales;
     }
 
-    public void setNumEntradasDigtales(int numEntradasDigtales) {
-        this.numEntradasDigtales = numEntradasDigtales;
+    public void setNumEntradasDigitales(int numEntradasDigtales) {
+        this.numEntradasDigitales = numEntradasDigtales;
     }
 
     public int getNumSalidasDigitales() {
