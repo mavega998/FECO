@@ -17,7 +17,10 @@ public class Test {
     public static void main(String[] args) {
         ConexionArduino arduino = new ConexionArduino();
         arduino.conectar("/dev/ttyUSB0");
-        arduino.enviarDatos(JOptionPane.showInputDialog("Ingrese Codigo"));
+        String msj = arduino.getMensaje();
+        String[] data = msj.split(":");
+        System.out.println(data[0]+"% - "+data[1]+"°C");
+        //arduino.enviarDatos(JOptionPane.showInputDialog("Ingrese Codigo"));
         //arduino.desconectar();
     }
 
