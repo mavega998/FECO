@@ -1,13 +1,13 @@
 package Vistas;
 
-import Modelos.ConexionArduino;
+import com.panamahitek.PanamaHitek_Arduino;
 import javax.swing.JOptionPane;
 
 public class GProceso extends javax.swing.JDialog {
 
-    private final ConexionArduino arduino;
+    private final PanamaHitek_Arduino arduino;
 
-    public GProceso(java.awt.Frame parent, boolean modal, ConexionArduino con) {
+    public GProceso(java.awt.Frame parent, boolean modal, PanamaHitek_Arduino con) {
         super(parent, modal);
         initComponents();
         arduino = con;
@@ -379,8 +379,8 @@ public class GProceso extends javax.swing.JDialog {
             }
             if (cmbCultivo.getSelectedIndex() == 1) {
                 for (int i = 0; i < 30; i++) {
-                    arduino.enviarDatos("1");
-                    String rta = arduino.getMensaje();
+                    arduino.sendData("1");
+                    String rta = arduino.printMessage();
                     String[] data = rta.split(":");
                     txtHumAir.setText(data[2]);
                     //JOptionPane.showMessageDialog(null, data[2]);
@@ -388,8 +388,8 @@ public class GProceso extends javax.swing.JDialog {
             }
             if (cmbCultivo.getSelectedIndex() == 2) {
                 for (int i = 0; i < 30; i++) {
-                    arduino.enviarDatos("2");
-                    String rta = arduino.getMensaje();
+                    arduino.sendData("2");
+                    String rta = arduino.printMessage();
                     String[] data = rta.split(":");
                     txtHumAir.setText(data[2]);
                     //JOptionPane.showMessageDialog(null, data[2]);
@@ -397,8 +397,8 @@ public class GProceso extends javax.swing.JDialog {
             }
             if (cmbCultivo.getSelectedIndex() == 3) {
                 for (int i = 0; i < 30; i++) {
-                    arduino.enviarDatos("3");
-                    String rta = arduino.getMensaje();
+                    arduino.sendData("3");
+                    String rta = arduino.printMessage();
                     String[] data = rta.split(":");
                     txtHumAir.setText(data[2]);
                     //JOptionPane.showMessageDialog(null, data[2]);
@@ -406,8 +406,8 @@ public class GProceso extends javax.swing.JDialog {
             }
             if (cmbCultivo.getSelectedIndex() == 4) {
                 for (int i = 0; i < 30; i++) {
-                    arduino.enviarDatos("4");
-                    String rta = arduino.getMensaje();
+                    arduino.sendData("4");
+                    String rta = arduino.printMessage();
                     String[] data = rta.split(":");
                     txtHumAir.setText(data[2]);
                     //JOptionPane.showMessageDialog(null, data[2]);

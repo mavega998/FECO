@@ -1,7 +1,8 @@
 package Vistas;
 
-import Modelos.ConexionArduino;
-import javax.swing.JOptionPane;
+import com.panamahitek.PanamaHitek_Arduino;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -11,20 +12,31 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class GGraficas extends javax.swing.JDialog {
 
-    ConexionArduino arduino;
+    private PanamaHitek_Arduino arduino;
     private final XYSeries serie = new XYSeries("Sensores");
     private final XYSeriesCollection coleccion = new XYSeriesCollection();
     private JFreeChart grafica;
-    private int h = 0;
+    private int i = 0;
+    private final SerialPortEventListener event = new SerialPortEventListener() {
+        @Override
+        public void serialEvent(SerialPortEvent spe) {
+            if(arduino.isMessageAvailable()){
+                //JOptionPane.showMessageDialog(null, arduino.printMessage());
+                String msj = arduino.printMessage();
+                String[] data = msj.split(":");
+                i++;
+                serie.add(i,Integer.parseInt(data[0]));
+                System.out.println(msj);
+            }
+        }
+    };
 
-    public GGraficas(java.awt.Frame parent, boolean modal, ConexionArduino con) {
+    public GGraficas(java.awt.Frame parent, boolean modal, PanamaHitek_Arduino con) {
         super(parent, modal);
         initComponents();
         arduino = con;
-        serie.add(0, 0);
-        coleccion.addSeries(serie);
-        grafica = ChartFactory.createXYLineChart("Temperatura vs Tiempo", "Tiempo", "Temperatura",
-                coleccion, PlotOrientation.VERTICAL, true, true, false);
+        serie.add(0,0);
+        grafica = ChartFactory.createXYLineChart("Medidas", "Titulo x", "Titulo y", coleccion, PlotOrientation.VERTICAL,true,true,true);
     }
 
     @SuppressWarnings("unchecked")
@@ -43,6 +55,7 @@ public class GGraficas extends javax.swing.JDialog {
         cmbCultivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Modulo 1", "Modulo 2", "Modulo 3", "Modulo 4" }));
 
         cmdViewCultivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eye.png"))); // NOI18N
+        cmdViewCultivo.setText("Ver");
         cmdViewCultivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdViewCultivoActionPerformed(evt);
@@ -72,20 +85,23 @@ public class GGraficas extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(cmbCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbCultivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(cmdViewCultivo))
-                    .addComponent(pGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbCultivo)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdViewCultivo))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbCultivo)
+                        .addComponent(cmdViewCultivo))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -95,31 +111,10 @@ public class GGraficas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
-        String rta;
-        ChartPanel panelGraph = new ChartPanel(grafica);
-        pGrafica.add(panelGraph);
-
-        if (cmbCultivo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
-        }
-        if (cmbCultivo.getSelectedIndex() == 1) {
-
-            for (int i = 0; i < 100; i++) {
-                arduino.enviarDatos("1");
-                rta = arduino.getMensaje();
-                String[] data = rta.split(":");
-                serie.add(i, Integer.parseInt(data[2].substring(0, 1)));
-            }
-        }
-        if (cmbCultivo.getSelectedIndex() == 2) {
-            arduino.enviarDatos("2");
-        }
-        if (cmbCultivo.getSelectedIndex() == 3) {
-            arduino.enviarDatos("3");
-        }
-        if (cmbCultivo.getSelectedIndex() == 4) {
-            arduino.enviarDatos("4");
-        }
+        ChartPanel panel = new ChartPanel(grafica);
+        pGrafica.add(panel);
+        //this.getContentPane().add(panel);
+        //this.pack();
     }//GEN-LAST:event_cmdViewCultivoActionPerformed
 
     public static void main(String args[]) {

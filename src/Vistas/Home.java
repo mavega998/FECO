@@ -1,14 +1,32 @@
 package Vistas;
 
 import Modelos.ConexionArduino;
+import com.panamahitek.PanamaHitek_Arduino;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
 
-    private ConexionArduino arduino;
+    //private ConexionArduino arduino;
+    private PanamaHitek_Arduino arduino;
+    private final int DATA_RATE = 9600;
     private String puerto;
+    private String msj;
+    private final SerialPortEventListener event = new SerialPortEventListener() {
+        @Override
+        public void serialEvent(SerialPortEvent spe) {
+            if(arduino.isMessageAvailable()){
+                //JOptionPane.showMessageDialog(null, arduino.printMessage());
+                msj = arduino.printMessage();
+                System.out.println(msj);
+            }
+        }
+    };
 
     @SuppressWarnings("all")
     public Home() {
@@ -163,29 +181,37 @@ public class Home extends javax.swing.JFrame {
         if (arduino == null) {
             puerto = (String) JOptionPane.showInputDialog(null, "Ingrese Puerto", "Sistema", JOptionPane.INFORMATION_MESSAGE, icono, null, null);
             if (!puerto.equals("")) {
-                arduino = new ConexionArduino();
-                arduino.conectar(puerto);
-
-                cmdViewCultivo.setEnabled(true);
-                cmdViewGraphics.setEnabled(true);
-                cmdViewMaint.setEnabled(true);
-                cmdViewConfig.setEnabled(true);
-
-                cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugon.png"));
+                try {
+                    arduino = new PanamaHitek_Arduino();
+                    arduino.arduinoRXTX(puerto,DATA_RATE,event);
+                    
+                    cmdViewCultivo.setEnabled(true);
+                    cmdViewGraphics.setEnabled(true);
+                    cmdViewMaint.setEnabled(true);
+                    cmdViewConfig.setEnabled(true);
+                    
+                    cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugon.png"));
+                } catch (Exception ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Debe ingresar el puerto", "Sistema", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            arduino.desconectar();
-            arduino = null;
-
-            JOptionPane.showMessageDialog(null, "Comunicacion Desconectada", "Sistema", JOptionPane.PLAIN_MESSAGE, icono);
-            cmdViewCultivo.setEnabled(false);
-            cmdViewGraphics.setEnabled(false);
-            cmdViewMaint.setEnabled(false);
-            cmdViewConfig.setEnabled(false);
-
-            cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugoff.png"));
+            try {
+                arduino.killArduinoConnection();
+                arduino = null;
+                
+                JOptionPane.showMessageDialog(null, "Comunicacion Desconectada", "Sistema", JOptionPane.PLAIN_MESSAGE, icono);
+                cmdViewCultivo.setEnabled(false);
+                cmdViewGraphics.setEnabled(false);
+                cmdViewMaint.setEnabled(false);
+                cmdViewConfig.setEnabled(false);
+                
+                cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugoff.png"));
+            } catch (Exception ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cmdConnectActionPerformed
 
