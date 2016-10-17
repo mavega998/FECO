@@ -12,6 +12,11 @@ import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
 
+    GGraficas ggrafica;
+    GConfiguracion vConfigura;
+    GMantenimiento vMantenimiento;
+    GProceso vproceso;
+    
     //private ConexionArduino arduino;
     private PanamaHitek_Arduino arduino;
     private final int DATA_RATE = 9600;
@@ -20,7 +25,7 @@ public class Home extends javax.swing.JFrame {
     private final SerialPortEventListener event = new SerialPortEventListener() {
         @Override
         public void serialEvent(SerialPortEvent spe) {
-            if(arduino.isMessageAvailable()){
+            if (arduino.isMessageAvailable()) {
                 //JOptionPane.showMessageDialog(null, arduino.printMessage());
                 msj = arduino.printMessage();
                 System.out.println(msj);
@@ -36,6 +41,9 @@ public class Home extends javax.swing.JFrame {
         cmdViewMaint.setEnabled(false);
         cmdViewConfig.setEnabled(false);
         this.setLocationRelativeTo(null);
+        
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -170,9 +178,13 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
-        GGraficas ggrafica;
-        ggrafica = new GGraficas(this, true, arduino);
-        ggrafica.setVisible(true);
+        try {
+            this.arduino.killArduinoConnection();
+            ggrafica = new GGraficas(this, true, puerto,DATA_RATE);
+            ggrafica.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmdViewCultivoActionPerformed
 
     private void cmdConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdConnectActionPerformed
@@ -183,13 +195,13 @@ public class Home extends javax.swing.JFrame {
             if (!puerto.equals("")) {
                 try {
                     arduino = new PanamaHitek_Arduino();
-                    arduino.arduinoRXTX(puerto,DATA_RATE,event);
-                    
+                    arduino.arduinoRXTX(puerto, DATA_RATE, event);
+
                     cmdViewCultivo.setEnabled(true);
                     cmdViewGraphics.setEnabled(true);
                     cmdViewMaint.setEnabled(true);
                     cmdViewConfig.setEnabled(true);
-                    
+
                     cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugon.png"));
                 } catch (Exception ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -201,13 +213,13 @@ public class Home extends javax.swing.JFrame {
             try {
                 arduino.killArduinoConnection();
                 arduino = null;
-                
+
                 JOptionPane.showMessageDialog(null, "Comunicacion Desconectada", "Sistema", JOptionPane.PLAIN_MESSAGE, icono);
                 cmdViewCultivo.setEnabled(false);
                 cmdViewGraphics.setEnabled(false);
                 cmdViewMaint.setEnabled(false);
                 cmdViewConfig.setEnabled(false);
-                
+
                 cmdConnect.setIcon(new ImageIcon("src/Imagenes/plugoff.png"));
             } catch (Exception ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,9 +228,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdConnectActionPerformed
 
     private void cmdViewConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewConfigActionPerformed
-        GConfiguracion vConfigura;
-        vConfigura = new GConfiguracion(this, true, arduino);
-        vConfigura.setVisible(true);
+        try {
+            this.arduino.killArduinoConnection();
+            vConfigura = new GConfiguracion(this, true);
+            vConfigura.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmdViewConfigActionPerformed
 
     private void cmdCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCloseActionPerformed
@@ -226,15 +242,24 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdCloseActionPerformed
 
     private void cmdViewMaintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewMaintActionPerformed
-        GMantenimiento vMantenimiento;
-        vMantenimiento = new GMantenimiento();
-        vMantenimiento.setVisible(true);
+        try {
+            this.arduino.killArduinoConnection();
+            vMantenimiento = new GMantenimiento();
+            vMantenimiento.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmdViewMaintActionPerformed
 
     private void cmdViewGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewGraphicsActionPerformed
-        GProceso vproceso;
-        vproceso = new GProceso(this, true, arduino);
-        vproceso.setVisible(true);
+        try {
+            this.arduino.killArduinoConnection();
+            vproceso = new GProceso(this, true, puerto, DATA_RATE);
+            vproceso.setVisible(true);
+            puerto = vproceso.obtenerPort();
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmdViewGraphicsActionPerformed
 
     private void cmdViewGraphics1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewGraphics1ActionPerformed
@@ -259,6 +284,11 @@ public class Home extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Home().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

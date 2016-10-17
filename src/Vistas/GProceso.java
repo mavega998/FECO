@@ -1,16 +1,55 @@
 package Vistas;
 
 import com.panamahitek.PanamaHitek_Arduino;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class GProceso extends javax.swing.JDialog {
 
     private final PanamaHitek_Arduino arduino;
+    private String[] data;
+    private String port;
+    private int daterate;
+    private final SerialPortEventListener event = new SerialPortEventListener() {
+        @Override
+        public void serialEvent(SerialPortEvent spe) {
+            if (arduino.isMessageAvailable()) {
+                //JOptionPane.showMessageDialog(null, arduino.printMessage());
+                String msj = arduino.printMessage();
+                data = msj.split(":");
+                System.out.println(msj);
+                try {
+                    if (cmbCultivo.getSelectedIndex() == 0) {
+                        txtHumAir.setText("");
+                        //JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
+                    }
+                    if (cmbCultivo.getSelectedIndex() == 1) {
+                        //arduino.sendData("1");
+                        txtHumAir.setText(data[0]);
+                        txtTemAir.setText(data[1]);
+                        //JOptionPane.showMessageDialog(null, data[0]);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    };
 
-    public GProceso(java.awt.Frame parent, boolean modal, PanamaHitek_Arduino con) {
+    public GProceso(java.awt.Frame parent, boolean modal, String puerto, int DATA_RATE) {
         super(parent, modal);
         initComponents();
-        arduino = con;
+        port = puerto;
+        daterate = DATA_RATE;
+        arduino = new PanamaHitek_Arduino();
+        try {
+            arduino.arduinoRXTX(puerto, DATA_RATE, event);
+        } catch (Exception ex) {
+            Logger.getLogger(GProceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -61,6 +100,11 @@ public class GProceso extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CULTIVO");
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         panGrafica.setBorder(javax.swing.BorderFactory.createTitledBorder("Grafica"));
 
@@ -334,9 +378,9 @@ public class GProceso extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmbCultivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmdViewCultivo))
+                                .addComponent(cmbCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmdViewCultivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -372,55 +416,35 @@ public class GProceso extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
-        try {
-            if (cmbCultivo.getSelectedIndex() == 0) {
-                JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
-            }
-            if (cmbCultivo.getSelectedIndex() == 1) {
-                for (int i = 0; i < 30; i++) {
-                    arduino.sendData("1");
-                    String rta = arduino.printMessage();
-                    String[] data = rta.split(":");
-                    txtHumAir.setText(data[2]);
-                    //JOptionPane.showMessageDialog(null, data[2]);
-                }
-            }
-            if (cmbCultivo.getSelectedIndex() == 2) {
-                for (int i = 0; i < 30; i++) {
-                    arduino.sendData("2");
-                    String rta = arduino.printMessage();
-                    String[] data = rta.split(":");
-                    txtHumAir.setText(data[2]);
-                    //JOptionPane.showMessageDialog(null, data[2]);
-                }
-            }
-            if (cmbCultivo.getSelectedIndex() == 3) {
-                for (int i = 0; i < 30; i++) {
-                    arduino.sendData("3");
-                    String rta = arduino.printMessage();
-                    String[] data = rta.split(":");
-                    txtHumAir.setText(data[2]);
-                    //JOptionPane.showMessageDialog(null, data[2]);
-                }
-            }
-            if (cmbCultivo.getSelectedIndex() == 4) {
-                for (int i = 0; i < 30; i++) {
-                    arduino.sendData("4");
-                    String rta = arduino.printMessage();
-                    String[] data = rta.split(":");
-                    txtHumAir.setText(data[2]);
-                    //JOptionPane.showMessageDialog(null, data[2]);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }//GEN-LAST:event_cmdViewCultivoActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            arduino.killArduinoConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(GProceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
+
+    private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
+        if (cmbCultivo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
+        }
+        if (cmbCultivo.getSelectedIndex() == 1) {
+            //JOptionPane.showMessageDialog(null, data[0]);
+        }
+        if (cmbCultivo.getSelectedIndex() == 2) {
+            //JOptionPane.showMessageDialog(null, data[2]);
+        }
+        if (cmbCultivo.getSelectedIndex() == 3) {
+            //JOptionPane.showMessageDialog(null, data[2]);
+        }
+        if (cmbCultivo.getSelectedIndex() == 4) {
+            //JOptionPane.showMessageDialog(null, data[2]);
+        }
+    }//GEN-LAST:event_cmdViewCultivoActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -439,6 +463,10 @@ public class GProceso extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GProceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+    }
+
+    public String obtenerPort() {
+        return port;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

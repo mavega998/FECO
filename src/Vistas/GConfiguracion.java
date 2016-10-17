@@ -6,7 +6,7 @@ public class GConfiguracion extends javax.swing.JDialog {
 
     private PanamaHitek_Arduino arduino;
 
-    public GConfiguracion(java.awt.Frame parent, boolean modal, PanamaHitek_Arduino con) {
+    public GConfiguracion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }

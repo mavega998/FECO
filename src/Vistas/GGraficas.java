@@ -3,6 +3,9 @@ package Vistas;
 import com.panamahitek.PanamaHitek_Arduino;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -20,23 +23,29 @@ public class GGraficas extends javax.swing.JDialog {
     private final SerialPortEventListener event = new SerialPortEventListener() {
         @Override
         public void serialEvent(SerialPortEvent spe) {
-            if(arduino.isMessageAvailable()){
+            if (arduino.isMessageAvailable()) {
                 //JOptionPane.showMessageDialog(null, arduino.printMessage());
                 String msj = arduino.printMessage();
                 String[] data = msj.split(":");
                 i++;
-                serie.add(i,Integer.parseInt(data[0]));
+                serie.add(i, Integer.parseInt(data[0]));
                 System.out.println(msj);
             }
         }
     };
 
-    public GGraficas(java.awt.Frame parent, boolean modal, PanamaHitek_Arduino con) {
+    public GGraficas(java.awt.Frame parent, boolean modal,String puerto,int DATA_RATE) {
         super(parent, modal);
         initComponents();
-        arduino = con;
-        serie.add(0,0);
-        grafica = ChartFactory.createXYLineChart("Medidas", "Titulo x", "Titulo y", coleccion, PlotOrientation.VERTICAL,true,true,true);
+        arduino = new PanamaHitek_Arduino();
+        try {
+            arduino.arduinoRXTX(puerto, DATA_RATE, event);
+        } catch (Exception ex) {
+            Logger.getLogger(GGraficas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        serie.add(0, 0);
+        serie.add(10, 10);
+        grafica = ChartFactory.createXYLineChart("Medidas", "Titulo x", "Titulo y", coleccion, PlotOrientation.VERTICAL, true, true, true);
     }
 
     @SuppressWarnings("unchecked")
@@ -112,7 +121,11 @@ public class GGraficas extends javax.swing.JDialog {
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
         ChartPanel panel = new ChartPanel(grafica);
-        pGrafica.add(panel);
+        JDialog ventana = new JDialog(this, "Grafica");
+        ventana.getContentPane().add(panel);
+        ventana.pack();
+        ventana.setVisible(true);
+        ventana.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         //this.getContentPane().add(panel);
         //this.pack();
     }//GEN-LAST:event_cmdViewCultivoActionPerformed
