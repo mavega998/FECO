@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vistas;
 
 import Modelos.ConexionArduino;
@@ -14,10 +9,6 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-/**
- *
- * @author MECATRONICA
- */
 public class GGraficas extends javax.swing.JDialog {
 
     ConexionArduino arduino;
@@ -30,10 +21,10 @@ public class GGraficas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         arduino = con;
-        serie.add(0,0);
+        serie.add(0, 0);
         coleccion.addSeries(serie);
-        grafica = ChartFactory.createXYLineChart("Temperatura vs Tiempo","Tiempo","Temperatura",
-                                                coleccion,PlotOrientation.VERTICAL,true,true,false);
+        grafica = ChartFactory.createXYLineChart("Temperatura vs Tiempo", "Tiempo", "Temperatura",
+                coleccion, PlotOrientation.VERTICAL, true, true, false);
     }
 
     @SuppressWarnings("unchecked")
@@ -107,7 +98,7 @@ public class GGraficas extends javax.swing.JDialog {
         String rta;
         ChartPanel panelGraph = new ChartPanel(grafica);
         pGrafica.add(panelGraph);
-        
+
         if (cmbCultivo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
         }
@@ -116,8 +107,8 @@ public class GGraficas extends javax.swing.JDialog {
             for (int i = 0; i < 100; i++) {
                 arduino.enviarDatos("1");
                 rta = arduino.getMensaje();
-                String[] data = rta.split(":");                
-                serie.add(i,Integer.parseInt(data[2].substring(0, 1)));
+                String[] data = rta.split(":");
+                serie.add(i, Integer.parseInt(data[2].substring(0, 1)));
             }
         }
         if (cmbCultivo.getSelectedIndex() == 2) {

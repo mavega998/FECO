@@ -2,10 +2,6 @@ package Vistas;
 
 import Modelos.ConexionArduino;
 
-/**
- *
- * @author MECATRONICA
- */
 public class GConfiguracion extends javax.swing.JDialog {
 
     public GConfiguracion(java.awt.Frame parent, boolean modal, ConexionArduino con) {
