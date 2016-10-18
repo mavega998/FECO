@@ -10,15 +10,13 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class GGraficas extends javax.swing.JDialog {
 
     private PanamaHitek_Arduino arduino;
-    private final XYSeries serie = new XYSeries("Sensores");
-    private final XYSeriesCollection coleccion = new XYSeriesCollection();
-    private JFreeChart grafica;
+    private final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    private final JFreeChart grafica;
     private int i = 0;
     private final SerialPortEventListener event = new SerialPortEventListener() {
         @Override
@@ -28,7 +26,7 @@ public class GGraficas extends javax.swing.JDialog {
                 String msj = arduino.printMessage();
                 String[] data = msj.split(":");
                 i++;
-                serie.add(i, Integer.parseInt(data[0]));
+                dataset.addValue(Integer.parseInt(data[0]),"Humedad",i);
                 System.out.println(msj);
             }
         }
@@ -43,9 +41,7 @@ public class GGraficas extends javax.swing.JDialog {
         } catch (Exception ex) {
             Logger.getLogger(GGraficas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        serie.add(0, 0);
-        serie.add(10, 10);
-        grafica = ChartFactory.createXYLineChart("Medidas", "Titulo x", "Titulo y", coleccion, PlotOrientation.VERTICAL, true, true, true);
+        grafica = ChartFactory.createLineChart("Medidas", "Titulo x", "Titulo y", dataset, PlotOrientation.VERTICAL, true, false, false);
     }
 
     @SuppressWarnings("unchecked")
