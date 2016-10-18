@@ -123,8 +123,7 @@ public class GProceso extends javax.swing.JDialog {
 
         cmbCultivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Proceso 1", "Proceso 2", "Proceso 4", "Proceso 5" }));
 
-        cmdViewCultivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eye.png"))); // NOI18N
-        cmdViewCultivo.setText("Ver");
+        cmdViewCultivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/info.png"))); // NOI18N
         cmdViewCultivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdViewCultivoActionPerformed(evt);
@@ -374,16 +373,17 @@ public class GProceso extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmdViewCultivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cmbCultivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cmdViewCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -429,21 +429,7 @@ public class GProceso extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosed
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
-        if (cmbCultivo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Debe Elegir un Modulo");
-        }
-        if (cmbCultivo.getSelectedIndex() == 1) {
-            //JOptionPane.showMessageDialog(null, data[0]);
-        }
-        if (cmbCultivo.getSelectedIndex() == 2) {
-            //JOptionPane.showMessageDialog(null, data[2]);
-        }
-        if (cmbCultivo.getSelectedIndex() == 3) {
-            //JOptionPane.showMessageDialog(null, data[2]);
-        }
-        if (cmbCultivo.getSelectedIndex() == 4) {
-            //JOptionPane.showMessageDialog(null, data[2]);
-        }
+        JOptionPane.showMessageDialog(this, "Cambie el proceso en el modulo para ver los datos de los sensores y del lote","Sistema",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_cmdViewCultivoActionPerformed
 
     public static void main(String args[]) {
@@ -454,13 +440,7 @@ public class GProceso extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GProceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GProceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GProceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GProceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }

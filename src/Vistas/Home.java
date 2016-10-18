@@ -16,7 +16,7 @@ public class Home extends javax.swing.JFrame {
     GConfiguracion vConfigura;
     GMantenimiento vMantenimiento;
     GProceso vproceso;
-    
+
     //private ConexionArduino arduino;
     private PanamaHitek_Arduino arduino;
     private final int DATA_RATE = 9600;
@@ -41,9 +41,6 @@ public class Home extends javax.swing.JFrame {
         cmdViewMaint.setEnabled(false);
         cmdViewConfig.setEnabled(false);
         this.setLocationRelativeTo(null);
-        
-        
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -180,7 +177,7 @@ public class Home extends javax.swing.JFrame {
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
         try {
             this.arduino.killArduinoConnection();
-            ggrafica = new GGraficas(this, true, puerto,DATA_RATE);
+            ggrafica = new GGraficas(this, true, puerto, DATA_RATE);
             ggrafica.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -256,7 +253,11 @@ public class Home extends javax.swing.JFrame {
             this.arduino.killArduinoConnection();
             vproceso = new GProceso(this, true, puerto, DATA_RATE);
             vproceso.setVisible(true);
-            puerto = vproceso.obtenerPort();
+            if(vproceso.isVisible()){
+                System.out.println("abierta procesos");
+            }else{
+                System.out.println(puerto);
+            }
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
