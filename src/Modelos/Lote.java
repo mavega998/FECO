@@ -4,7 +4,7 @@ public class Lote {
 
     private String idLote;
     private Cultivo cultivo;
-    private float tamanho;
+    private float area;
     private String estado;
     private Modulo modulo;
 
@@ -27,12 +27,12 @@ public class Lote {
         this.cultivo = cultivo;
     }
 
-    public float getTamanho() {
-        return tamanho;
+    public float getArea() {
+        return area;
     }
 
-    public void setTamanho(float tamanho) {
-        this.tamanho = tamanho;
+    public void setArea(float area) {
+        this.area = area;
     }
 
     public String getEstado() {

@@ -3,9 +3,9 @@ package Modelos;
 public class Persona {
     private String id;
     private String nombre;
-    private String email;
     private String telefono;
     private String direccion;
+    private String email;
 
     public Persona() {
     }
