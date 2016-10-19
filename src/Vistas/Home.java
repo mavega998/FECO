@@ -1,6 +1,5 @@
 package Vistas;
 
-import Modelos.ConexionArduino;
 import com.panamahitek.PanamaHitek_Arduino;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
@@ -179,6 +178,10 @@ public class Home extends javax.swing.JFrame {
             this.arduino.killArduinoConnection();
             ggrafica = new GGraficas(this, true, puerto, DATA_RATE);
             ggrafica.setVisible(true);
+            
+            if(!ggrafica.isVisible()){
+                reactivar();
+            }
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -253,10 +256,9 @@ public class Home extends javax.swing.JFrame {
             this.arduino.killArduinoConnection();
             vproceso = new GProceso(this, true, puerto, DATA_RATE);
             vproceso.setVisible(true);
-            if(vproceso.isVisible()){
-                System.out.println("abierta procesos");
-            }else{
-                System.out.println(puerto);
+            
+            if(!vproceso.isVisible()){
+                reactivar();
             }
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -290,6 +292,15 @@ public class Home extends javax.swing.JFrame {
                 new Home().setVisible(true);
             }
         });
+    }
+    
+    public void reactivar(){
+        try {
+            this.arduino.killArduinoConnection();
+            arduino.arduinoRXTX(puerto, DATA_RATE, event);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

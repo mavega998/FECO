@@ -1,5 +1,6 @@
 package Vistas;
 
+import Modelos.Grafica;
 import com.panamahitek.PanamaHitek_Arduino;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
@@ -11,12 +12,16 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 public class GGraficas extends javax.swing.JDialog {
 
     private PanamaHitek_Arduino arduino;
-    private final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    private final JFreeChart grafica;
+    //private final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    private XYSeries serie;
+    private XYSeriesCollection coleccion;
+    private final Grafica grafica;
     private int i = 0;
     private final SerialPortEventListener event = new SerialPortEventListener() {
         @Override
@@ -26,7 +31,7 @@ public class GGraficas extends javax.swing.JDialog {
                 String msj = arduino.printMessage();
                 String[] data = msj.split(":");
                 i++;
-                dataset.addValue(Integer.parseInt(data[0]),"Humedad",i);
+                serie.add(i,Integer.parseInt(data[2]));
                 System.out.println(msj);
             }
         }
@@ -36,12 +41,14 @@ public class GGraficas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         arduino = new PanamaHitek_Arduino();
+        serie = new XYSeries("Humedad (%)");
+        coleccion = new XYSeriesCollection(serie);
         try {
             arduino.arduinoRXTX(puerto, DATA_RATE, event);
         } catch (Exception ex) {
             Logger.getLogger(GGraficas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        grafica = ChartFactory.createLineChart("Medidas", "Titulo x", "Titulo y", dataset, PlotOrientation.VERTICAL, true, false, false);
+        grafica = new Grafica();
     }
 
     @SuppressWarnings("unchecked")
@@ -54,6 +61,11 @@ public class GGraficas extends javax.swing.JDialog {
         pGrafica = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("CULTIVO:");
 
@@ -116,15 +128,19 @@ public class GGraficas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdViewCultivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewCultivoActionPerformed
-        ChartPanel panel = new ChartPanel(grafica);
-        JDialog ventana = new JDialog(this, "Grafica");
-        ventana.getContentPane().add(panel);
-        ventana.pack();
-        ventana.setVisible(true);
-        ventana.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        grafica.crearGrafica(coleccion);
+        grafica.mostrarGrafica(this);
         //this.getContentPane().add(panel);
         //this.pack();
     }//GEN-LAST:event_cmdViewCultivoActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            arduino.killArduinoConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(GProceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
     public static void main(String args[]) {
         try {
