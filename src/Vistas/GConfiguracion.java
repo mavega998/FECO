@@ -379,8 +379,6 @@ public class GConfiguracion extends javax.swing.JDialog {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Activo", "Inactivo" }));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuarios-online.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -494,8 +492,6 @@ public class GConfiguracion extends javax.swing.JDialog {
         jLabel35.setText("Estado");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo", "En Preparación", "Proceso" }));
-
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camara1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -645,7 +641,7 @@ public class GConfiguracion extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -764,7 +760,7 @@ public class GConfiguracion extends javax.swing.JDialog {
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel28))
                                 .addComponent(jTextField24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -813,312 +809,54 @@ public class GConfiguracion extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-//
-//        if(this.jTabbedPane1.getSelectedIndex() == 0){
-//            this.controlUsuario.limpiarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//
-//            this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                this.txtCheckPasswordUsuario, this.jcbRolesUsuario, true);
-//
-//            this.controlLote.modificarCamposLotes(this.txtNombreLote, this.txtRefencia, this.txtDescripcion, this.txtAncho,
-//                this.txtAlto, false);
-//
-//            this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, false);
-//        }
-//        else {
-//            if(this.jTabbedPane1.getSelectedIndex() == 1){
-//                this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                    this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                    this.txtCheckPasswordUsuario, this.jcbRolesUsuario, false);
-//                this.controlLote.modificarCamposLotes(this.txtNombreLote, this.txtRefencia, this.txtDescripcion, this.txtAncho,
-//                    this.txtAlto, false);
-//
-//                this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                    this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                    this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                    this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, true);
-//
-//                this.controlCultivo.limpiarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                    this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                    this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                    this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego);
-//            }
-//            else {
-//                if(this.jTabbedPane1.getSelectedIndex() == 2){
-//                    this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                        this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                        this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                        this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, false);
-//
-//                    this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                        this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                        this.txtCheckPasswordUsuario, this.jcbRolesUsuario, false);
-//
-//                    this.controlLote.modificarCamposLotes(this.txtNombreLote, this.txtRefencia, this.txtDescripcion, this.txtAncho,
-//                        this.txtAlto, true);
-//
-//                    this.controlLote.limparCampos(this.txtNombreLote, this.txtRefencia, this.txtDescripcion, this.txtAncho, this.txtAlto);
-//                }
-//            }
-//        }
-//
-//        this.btnAceptar.setEnabled(true);
-//        this.btnCancelar.setEnabled(true);
+        if (this.jTabbedPane1.getSelectedIndex() == 0) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 1) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 2) {
+
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-//        if(this.jTabbedPane1.getSelectedIndex() == 0){
-//            this.txtNombreUsuario.setEditable(true);
-//            this.txtNickNameUsuario.setEditable(true);
-//            this.txtPasswordUsuario.setEditable(true);
-//            this.txtCheckPasswordUsuario.setEditable(true);
-//            this.jcbRolesUsuario.setEnabled(true);
-//            this.txtApellidosUsuario.setEditable(true);
-//            this.btnAgregar.setEnabled(false);
-//            this.btnEliminar.setEnabled(false);
-//            this.btnAceptar.setEnabled(true);
-//            this.btnCancelar.setEnabled(true);
-//
-//            this.editar = true;
-//        }else{
-//            if(this.jTabbedPane1.getSelectedIndex() == 1){
-//
-//                this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                    this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                    this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                    this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, true);
-//
-//                this.btnAceptar.setEnabled(true);
-//                this.btnCancelar.setEnabled(true);
-//                this.editar = true;
-//            }
-//            else{
-//                if(this.jTabbedPane1.getSelectedIndex() == 2){
-//                    this.controlLote.modificarCamposLotes(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto, editar);
-//                    this.btnAceptar.setEnabled(true);
-//                    this.btnCancelar.setEnabled(true);
-//                    this.editar = true;
-//                }
-//            }
-//        }
+        if (this.jTabbedPane1.getSelectedIndex() == 0) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 1) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 2) {
+
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-//        int eliminar = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar el registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-//        if(eliminar == 0 && this.jTabbedPane1.getSelectedIndex() == 0){
-//            boolean delete = this.controlUsuario.eliminarUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//            if(delete){
-//                this.controlUsuario.limpiarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                    this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                    this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//                this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                    this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                    this.txtCheckPasswordUsuario, this.jcbRolesUsuario, false);
-//                this.controlUsuario.llenarTabla(this.tblUsuarios);
-//                this.controlUsuario.llenarRoles(jcbRolesUsuario);
-//                this.editar = false;
-//                this.btnEstadoInicial();
-//                JOptionPane.showMessageDialog(this, "El registro se eliminó correctamente.", "Eliminar Registro", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        }else{
-//            if(eliminar == 0 && this.jTabbedPane1.getSelectedIndex() == 1){
-//                boolean delete = this.controlCultivo.eliminarCultivo(this.cultivos.get(this.tblCultivos.getSelectedRow()));
-//                if(delete){
-//                    this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                        this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                        this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                        this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, false);
-//                    this.controlCultivo.limpiarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                        this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                        this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                        this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego);
-//                    this.btnEstadoInicial();
-//                    this.editar = false;
-//                    this.cultivos = this.controlCultivo.llenarTablaCultivo(this.tblCultivos);
-//                    this.sistemas = this.controlCultivo.llenarSistemas(jcbSistemaRiego);
-//                    JOptionPane.showMessageDialog(this, "El registro fue eliminado correctamente.", "Elimnar Cultivo", JOptionPane.INFORMATION_MESSAGE);
-//                }
-//            }else{
-//                if(eliminar == 0 && this.jTabbedPane1.getSelectedIndex() == 2){
-//                    boolean delete = this.controlLote.EliminarLote(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                    if(delete){
-//                        this.controlLote.modificarCamposLotes(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto, false);
-//                        this.controlLote.limparCampos(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                        this.lotes = this.controlLote.llenarTabla(tblLotes);
-//                        this.btnEstadoInicial();
-//                        this.editar = false;
-//                        JOptionPane.showMessageDialog(this, "El registro fue eliminado correctamente.", "Elimnar Cultivo", JOptionPane.INFORMATION_MESSAGE);
-//                    }
-//                }
-//            }
-//        }
+        int eliminar = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar el registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (eliminar == 0 && this.jTabbedPane1.getSelectedIndex() == 0) {
 
+        } else if (eliminar == 0 && this.jTabbedPane1.getSelectedIndex() == 1) {
+
+        } else if (eliminar == 0 && this.jTabbedPane1.getSelectedIndex() == 2) {
+
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-//        if(this.jTabbedPane1.getSelectedIndex() == 0){
-//            this.controlUsuario.limpiarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//            this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                this.txtCheckPasswordUsuario, this.jcbRolesUsuario, false);
-//            this.btnEstadoInicial();
-//            this.editar = false;
-//        }else{
-//            if(this.jTabbedPane1.getSelectedIndex() == 1){
-//                this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                    this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                    this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                    this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, false);
-//                this.controlCultivo.limpiarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                    this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                    this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                    this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego);
-//                this.btnEstadoInicial();
-//                this.editar = false;
-//            }else{
-//                if(this.jTabbedPane1.getSelectedIndex() == 2){
-//                    this.controlLote.modificarCamposLotes(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto, editar);
-//                    this.controlLote.limparCampos(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                    this.btnEstadoInicial();
-//                    this.editar = false;
-//                }
-//            }
-//        }
+        if (this.jTabbedPane1.getSelectedIndex() == 0) {
 
+        } else if (this.jTabbedPane1.getSelectedIndex() == 1) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 2) {
+
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-//        if(this.jTabbedPane1.getSelectedIndex() == 0){
-//
-//            boolean validar = this.controlUsuario.validarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//            if(validar && !editar){
-//                boolean agregar = this.controlUsuario.agregarUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                    this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                    this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//                if (agregar){
-//                    this.controlUsuario.limpiarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                        this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                        this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//                    this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                        this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                        this.txtCheckPasswordUsuario, this.jcbRolesUsuario, false);
-//                    this.usuarios = this.controlUsuario.llenarTabla(this.tblUsuarios);
-//                    this.roles = this.controlUsuario.llenarRoles(jcbRolesUsuario);
-//                    this.btnEstadoInicial();
-//                    JOptionPane.showMessageDialog(null, "El registro se agregó correctamente.", "Registro Agregado", JOptionPane.INFORMATION_MESSAGE);
-//                }
-//            }else{
-//                if(validar && editar){
-//                    boolean edit = this.controlUsuario.modificarUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                        this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                        this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//                    if(edit){
-//                        this.controlUsuario.limpiarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                            this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                            this.txtCheckPasswordUsuario, this.jcbRolesUsuario);
-//                        this.controlUsuario.modificarCamposUsuario(this.txtNombreUsuario, this.txtApellidosUsuario, this.txtDocumentoUsuario, this.txtTelefonoUsuario,
-//                            this.txtCelularUsuario, this.txtDireccionUsuario, this.txtEmailUsuario, this.txtNickNameUsuario, this.txtPasswordUsuario,
-//                            this.txtCheckPasswordUsuario, this.jcbRolesUsuario, false);
-//                        this.usuarios = this.controlUsuario.llenarTabla(this.tblUsuarios);
-//                        this.roles = this.controlUsuario.llenarRoles(jcbRolesUsuario);
-//                        this.editar = false;
-//                        this.btnEstadoInicial();
-//                        JOptionPane.showMessageDialog(null, "El registro se modificó correctamente.", "Registro Modificado", JOptionPane.INFORMATION_MESSAGE);
-//                    }
-//                }
-//            }
-//        }else{
-//            if(this.jTabbedPane1.getSelectedIndex() == 1){
-//
-//                boolean validar =this.controlCultivo.validarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                    this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                    this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                    this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego);
-//                if(validar && !this.editar){
-//                    boolean agregar = this.controlCultivo.ordenCultivo("", this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                        this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                        this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                        this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, 1);
-//                    if(agregar){
-//                        this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                            this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                            this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                            this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, false);
-//                        this.controlCultivo.limpiarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                            this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                            this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                            this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego);
-//                        this.btnEstadoInicial();
-//                        this.editar = false;
-//                        this.cultivos = this.controlCultivo.llenarTablaCultivo(this.tblCultivos);
-//                        this.sistemas = this.controlCultivo.llenarSistemas(jcbSistemaRiego);
-//                        JOptionPane.showMessageDialog(this, "El registro fue agregado correctamente.", "Crear Cultivo", JOptionPane.INFORMATION_MESSAGE);
-//                    }
-//                }else{
-//                    if(validar && this.editar){
-//                        boolean edit = this.controlCultivo.ordenCultivo(this.cultivos.get(this.tblCultivos.getSelectedRow()).getCul_id(), this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                            this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                            this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                            this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, 2);
-//                        if(edit){
-//                            this.controlCultivo.modificarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                                this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                                this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                                this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego, false);
-//                            this.controlCultivo.limpiarCamposCult(this.txtNombreCultivo, this.txtTiempo, this.txtDiasd, this.txtHumedadsd,
-//                                this.txtTemperaturad, this.txtHumedadrd, this.txtphd, this.txtDiasfl, this.txtHumedadsfl,
-//                                this.txtTemperaturafl, this.txtHumedadrfl, this.txtphfl, this.txtDiasfr, this.txtHumedadsfr,
-//                                this.txtTemperaturafr, this.txtHumedadrfr, this.txtphfr, this.jcbSistemaRiego);
-//                            this.btnEstadoInicial();
-//                            this.editar = false;
-//                            this.cultivos = this.controlCultivo.llenarTablaCultivo(this.tblCultivos);
-//                            this.sistemas = this.controlCultivo.llenarSistemas(jcbSistemaRiego);
-//                            JOptionPane.showMessageDialog(this, "El registro fue modificado correctamente.", "Modificar Cultivo", JOptionPane.INFORMATION_MESSAGE);
-//                        }
-//                    }
-//                }
-//            }else{
-//                if(this.jTabbedPane1.getSelectedIndex() == 2){
-//                    boolean validar = this.controlLote.validarCampos(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                    if(validar && !editar){
-//                        boolean agregar = this.controlLote.crearLote(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                        if(agregar){
-//                            this.controlLote.modificarCamposLotes(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto, false);
-//                            this.controlLote.limparCampos(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                            this.lotes = this.controlLote.llenarTabla(tblLotes);
-//                            this.btnEstadoInicial();
-//                            this.editar = false;
-//                            JOptionPane.showMessageDialog(this, "El registro fue creado correctamente.", "Crear Lote", JOptionPane.INFORMATION_MESSAGE);
-//                        }
-//                    }
-//                    else{
-//                        if(validar && this.editar){
-//                            boolean edit = this.controlLote.modificarLote(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                            if(edit){
-//                                this.controlLote.modificarCamposLotes(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto, false);
-//                                this.controlLote.limparCampos(txtNombreLote, txtRefencia, txtDescripcion, txtAncho, txtAlto);
-//                                this.lotes = this.controlLote.llenarTabla(tblLotes);
-//                                this.btnEstadoInicial();
-//                                this.editar = false;
-//                                JOptionPane.showMessageDialog(this, "El registro fue creado correctamente.", "Crear Lote", JOptionPane.INFORMATION_MESSAGE);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        if (this.jTabbedPane1.getSelectedIndex() == 0) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 1) {
+
+        } else if (this.jTabbedPane1.getSelectedIndex() == 2) {
+            
+        }
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
