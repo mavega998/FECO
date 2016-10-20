@@ -6,7 +6,6 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
