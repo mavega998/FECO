@@ -63,7 +63,7 @@ public class Grafica {
         ventana.getContentPane().add(panel);
         ventana.pack();
         ventana.setVisible(true);
-        ventana.dispose();
+        //ventana.dispose();
         ventana.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         return panel;
     }

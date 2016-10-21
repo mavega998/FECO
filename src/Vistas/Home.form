@@ -28,9 +28,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="cmdViewMaint" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="cmdMantenimiento" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cmdViewConfig" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="cmdConfiguracion" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="cmdConnect" min="-2" pref="45" max="-2" attributes="0"/>
@@ -38,11 +38,11 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="cmdViewCultivo" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="cmdCamaras" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cmdViewGraphics" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="cmdMonitoreo" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cmdViewGraphics1" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="cmdSeguimiento" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -54,14 +54,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="cmdViewGraphics" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmdViewGraphics1" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmdViewCultivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdMonitoreo" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdSeguimiento" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdCamaras" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="cmdViewConfig" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmdViewMaint" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdConfiguracion" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdMantenimiento" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdConnect" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="cmdViewCultivo">
+    <Component class="javax.swing.JButton" name="cmdCamaras">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
@@ -82,16 +82,16 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/fields.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CCTV CULTIVOS"/>
+        <Property name="text" type="java.lang.String" value="CAMARAS"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdViewCultivoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdCamarasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="cmdViewGraphics">
+    <Component class="javax.swing.JButton" name="cmdMonitoreo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
@@ -99,15 +99,15 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/charts.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DATOS CULTIVOS"/>
+        <Property name="text" type="java.lang.String" value="MONITOREO"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdViewGraphicsActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdMonitoreoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="cmdViewMaint">
+    <Component class="javax.swing.JButton" name="cmdMantenimiento">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
@@ -120,10 +120,10 @@
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdViewMaintActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdMantenimientoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="cmdViewConfig">
+    <Component class="javax.swing.JButton" name="cmdConfiguracion">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
@@ -136,7 +136,7 @@
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdViewConfigActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdConfiguracionActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cmdClose">
@@ -160,7 +160,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdConnectActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="cmdViewGraphics1">
+    <Component class="javax.swing.JButton" name="cmdSeguimiento">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
@@ -168,12 +168,12 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/sprout.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="INICIAR PROCESO"/>
+        <Property name="text" type="java.lang.String" value="SEGUIMIENTOS"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdViewGraphics1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdSeguimientoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
