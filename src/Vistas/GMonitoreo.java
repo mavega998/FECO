@@ -4,15 +4,14 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
 
 public class GMonitoreo extends javax.swing.JDialog {
 
     public GMonitoreo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        UIManager.put("ProgressBarUI.selectionBackground", Color.black);
-        UIManager.put("ProgressBarUI.selectionForeground", Color.white);
-        UIManager.put("ProgressBarUI.foreground", new Color(80, 187, 251));
+        //UIManager.put("ProgressBarUI.selectionBackground", Color.black);
+        //UIManager.put("ProgressBarUI.selectionForeground", Color.white);
+        //UIManager.put("ProgressBarUI.foreground", new Color(80, 187, 251));
         initComponents();
         ImageIcon image = new ImageIcon("src/Imagenes/plantilla_blanco.jpg");
         Icon icono = new ImageIcon(image.getImage().getScaledInstance(lblBackground.getWidth(), lblBackground.getHeight(), Image.SCALE_DEFAULT));
