@@ -4,7 +4,6 @@ import Modelos.Grafica;
 import com.panamahitek.PanamaHitek_Arduino;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
-import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
