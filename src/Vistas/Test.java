@@ -6,6 +6,12 @@
 package Vistas;
 
 import Modelos.ConexionArduino;
+import com.panamahitek.PanamaHitek_Arduino;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +21,26 @@ import javax.swing.JOptionPane;
 public class Test {
     
     public static void main(String[] args) {
-        ConexionArduino arduino = new ConexionArduino();
-        arduino.conectar("/dev/ttyUSB0");
-        String msj = arduino.getMensaje();
-        String[] data = msj.split(":");
-        System.out.println(data[0]+"% - "+data[1]+"°C");
-        //arduino.enviarDatos(JOptionPane.showInputDialog("Ingrese Codigo"));
-        //arduino.desconectar();
+        PanamaHitek_Arduino arduino = new PanamaHitek_Arduino();
+        SerialPortEventListener event = new SerialPortEventListener() {
+            @Override
+            public void serialEvent(SerialPortEvent spe) {
+                if(arduino.isMessageAvailable()){
+                    System.out.println(arduino.printMessage());
+                }
+            }
+        };
+        
+        List<String> puertos = arduino.getSerialPorts();
+        if (puertos.size() > 0) {
+            try {
+                arduino.arduinoRXTX(puertos.get(0), 9600, event);
+            } catch (Exception ex) {
+                Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay puerto disponible", "Sistema", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }
