@@ -1,9 +1,9 @@
 # Proyecto Formula SENA-ECO
 
-<h4>Proyecto para competencia en soluciones para la sociedad ayudando al medio ambiente.</h4>
+<h4>Estacion de Monitoreo y Control para cultivos de alta densidad</h4>
 
 <p>
-  Esta proyecto se realiza para brindarle un apoyo a nuestros campesinos, agricultores y cultivadores de nuestro campo colombiano. Haciendo el trabajo un poco mas facil en el riego, fertilizacion, control y cuidado de sus cultivos y siembras. En este proyecto incluimos las siguientes opciones:
+  Proyecto para competencia en soluciones para la sociedad ayudando al medio ambiente. Este proyecto se realiza para brindarle un apoyo a nuestros campesinos, agricultores y cultivadores de nuestro campo colombiano. Haciendo el trabajo un poco mas facil en el riego, fertilizacion, control y cuidado de sus cultivos y siembras. En este proyecto incluimos las siguientes opciones:
 <ul>
   <li>Control y Monitoreo de Cultivos</li>
   <li>Creacion, Eliminacion y Actualizacion de Modulos, Cultivos y Usuarios</li>
